@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thông tin thiết bị</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        color: #333;
+      }
+      .device-info {
+        background-color: #c7e99a;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+      }
+      .info-row {
+        display: flex;
+        margin-bottom: 10px;
+      }
+      .info-label {
+        font-weight: bold;
+        width: 150px;
+      }
+      .status-active {
+        color: green;
+        font-weight: bold;
+      }
+      .footer {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 0.9em;
+        color: #7f8c8d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="device-info">
+      <h1>Thông tin thiết bị</h1>
+
+      <div class="info-row">
+        <div class="info-label">Mã thiết bị:</div>
+        <div id="device-id">Đang tải...</div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">Tên thiết bị:</div>
+        <div id="device-name">Đang tải...</div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">Model:</div>
+        <div id="model">Đang tải...</div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">Số serial:</div>
+        <div id="serial-number">Đang tải...</div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">Ngày mua:</div>
+        <div id="purchase-date">Đang tải...</div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">Người quản lý:</div>
+        <div id="owner">Đang tải...</div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">Trạng thái:</div>
+        <div id="status" class="status-active">Đang tải...</div>
+      </div>
+    </div>
+
+    <div class="footer">Hệ thống quản lý thiết bị &copy; 2025</div>
+
+    <script>
+      // Lấy thông tin từ URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const deviceId = urlParams.get("id");
+
+      // Đây là nơi bạn sẽ kết nối với cơ sở dữ liệu hoặc API
+      // Để đơn giản, chúng ta sẽ sử dụng dữ liệu mẫu
+      const devices = {
+        DEV001: {
+          device_id: "TB001",
+          device_name: "Laptop Dell XPS 15",
+          model: "XPS 15 9520",
+          serial_number: "123456789-IT",
+          purchase_date: "15/08/2023",
+          owner: "Nguyễn Văn A",
+          status: "Đang sử dụng",
+        },
+        DEV002: {
+          device_id: "TB002",
+          device_name: "Macbook Pro 16",
+          model: "Macbook Pro 2023",
+          serial_number: "123456789-Kho",
+          purchase_date: "17/08/2023",
+          owner: "Nguyễn Văn B",
+          status: "Đang sử dụng",
+        },
+      };
+
+      // Hiển thị thông tin thiết bị
+      if (deviceId && devices[deviceId]) {
+        const device = devices[deviceId];
+        document.getElementById("device-id").textContent = device.device_id;
+        document.getElementById("device-name").textContent = device.device_name;
+        document.getElementById("model").textContent = device.model;
+        document.getElementById("serial-number").textContent =
+          device.serial_number;
+        document.getElementById("purchase-date").textContent =
+          device.purchase_date;
+        document.getElementById("owner").textContent = device.owner;
+        document.getElementById("status").textContent = device.status;
+
+        // Thay đổi màu sắc tùy theo trạng thái
+        if (device.status === "Đang sử dụng") {
+          document.getElementById("status").className = "status-active";
+        } else if (device.status === "Bảo trì") {
+          document.getElementById("status").className = "status-maintenance";
+        } else {
+          document.getElementById("status").className = "status-inactive";
+        }
+      } else {
+        document.getElementById("device-id").textContent =
+          "Không tìm thấy thông tin thiết bị";
+      }
+    </script>
+  </body>
+</html>
