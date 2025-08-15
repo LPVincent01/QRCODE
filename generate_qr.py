@@ -15,8 +15,8 @@ device_info = {
 
 # Tạo URL GitHub Pages (thay bằng username GitHub của bạn)
 github_username = "LPVincent01"  # Thay bằng username GitHub của bạn
-repo_name = "testQRCODE"        # Tên repo
-device_id = "TB001"            # ID thiết bị
+repo_name = "QRCODE"        # Tên repo
+device_id = "DEV001"            # ID thiết bị
 
 url = f"https://{github_username}.github.io/{repo_name}/device.html?id={device_id}"
 
