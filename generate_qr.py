@@ -12,13 +12,12 @@ device_info = {
     "status": "Đang sử dụng"
 }
 
-
 # Tạo URL GitHub Pages (thay bằng username GitHub của bạn)
 github_username = "LPVincent01"  # Thay bằng username GitHub của bạn
 repo_name = "QRCODE"        # Tên repo
-device_id = "DEV001"            # ID thiết bị
+device_id = "TB001"            # ID thiết bị
 
-url = f"https://{github_username}.github.io/{repo_name}/device.html?id={device_id}"
+url = f"https://{github_username}.github.io/{repo_name}/index.html?id={device_id}"
 
 # Tạo QR Code
 qr = qrcode.QRCode(
